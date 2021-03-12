@@ -9,35 +9,9 @@ import com.example.demo.bean.Employee;
 import com.example.demo.model.dao.EmployeeDao;
 
 
-
 @Service
 public class EmployeeService {
 	
-	public Employee findByRef(String ref) {
-		return employeeDao.findByRef(ref);
-	}
-
-//	public Employee findByTypeContratCode(String code) {
-//		return employeeDao.findByTypeContratCode(code);
-//	}
-
-//	public int deleteByTypeContratCode(String code) {
-//		return employeeDao.deleteByTypeContratCode(code);
-//	}
-
-	@Transactional
-	public int deleteByRef(String ref) {
-		return employeeDao.deleteByRef(ref);
-	}
-
-	public List<Employee> findByRefLikeAndSalaireActuelGreaterThan(String ref, double salaireActuel) {
-		return employeeDao.findByRefLikeAndSalaireActuelGreaterThan(ref, salaireActuel);
-	}
-
-	public List<Employee> findAll() {
-		return employeeDao.findAll();
-	}
-
 	public int  save(Employee employee) {
 		if(findByRef(employee.getRef())!=null) {	
 			return -1;
@@ -47,10 +21,31 @@ public class EmployeeService {
 		}
 	}
 	
+	public Employee findByRef(String ref) {
+		return employeeDao.findByRef(ref);
+	}
+
+	@Transactional
+	public int deleteByRef(String ref) {
+		int deletecontrat = contratService.deleteByTypeContratCode(ref);
+		int deleteemployee = employeeDao.deleteByRef(ref);
+		return deletecontrat+deleteemployee;
+	}
+
+	public List<Employee> findByRefLikeAndSalaireActuelGreaterThan(String ref, double salaireActuel) {
+		return employeeDao.findByRefLikeAndSalaireActuelGreaterThan(ref, salaireActuel);
+	}
+
+	public List<Employee> findAll() {
+		return employeeDao.findAll();
+	}
+	
 	public Employee getOne(Long id) {
 		return employeeDao.getOne(id);
 	}
 	
 	@Autowired
 	private EmployeeDao employeeDao;
+	@Autowired
+	private ContratService contratService;
 }

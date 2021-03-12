@@ -14,6 +14,7 @@ public class TypeContrat {
 	private String code;
 	private String libelle;
 	
+	
 	public long getId() {
 		return id;
 	}

@@ -9,6 +9,5 @@ import com.example.demo.bean.TypeContrat;
 public interface TypeContratDao extends JpaRepository<TypeContrat, Long> {
 	
 	TypeContrat findByCode(String code);
-	
 	int deleteByCode(String code);
 }

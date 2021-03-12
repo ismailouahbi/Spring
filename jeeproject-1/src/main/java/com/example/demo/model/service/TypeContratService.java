@@ -8,8 +8,13 @@ import org.springframework.stereotype.Service;
 import com.example.demo.bean.TypeContrat;
 import com.example.demo.model.dao.TypeContratDao;
 
+
 @Service
 public class TypeContratService {
+	
+	public void update(TypeContrat typeContrat) {
+		typeContratDao.save(typeContrat);
+	}
 	
     public int save(TypeContrat typeContrat) {
     	if(findByCode(typeContrat.getCode())!=null) {
@@ -17,23 +22,30 @@ public class TypeContratService {
     	}
     	else {
     		typeContratDao.save(typeContrat);
-    		return -1;
+    		return 1;
     	}
     }
+    
 	public TypeContrat findByCode(String code) {
 		return typeContratDao.findByCode(code);
-	}
-	
-	@Transactional
-	public int deleteByCode(String code) {
-		return typeContratDao.deleteByCode(code);
 	}
 	
 	public List<TypeContrat> findAll() {
 		return typeContratDao.findAll();
 	}
 	
+	
+	@Transactional
+	public int deleteByCode(String code) {
+		int deleteContrat = contratService.deleteByTypeContratCode(code);
+		int deleteTypeContrat =  typeContratDao.deleteByCode(code);
+		return deleteContrat+deleteTypeContrat;
+	}
+	
+	
 	@Autowired
-	private TypeContratDao	 typeContratDao;
+	private TypeContratDao typeContratDao;
+	@Autowired
+	private ContratService contratService;
 
 }

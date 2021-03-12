@@ -5,23 +5,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Employee {
+	
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    
   	private long id;
+    private String ref;
 	private String nom;
 	private String prenom;
 	private double salaireActuel;
-	private String ref;
-	//@
-	//private Societe societeActelle;
-	@OneToOne
-	private TypeContrat typeContratActuel;
-	
 	
 	public long getId() {
 		return id;
@@ -94,8 +88,4 @@ public class Employee {
 			return false;
 		return true;
 	}
-	
-	
-	
-
 }
