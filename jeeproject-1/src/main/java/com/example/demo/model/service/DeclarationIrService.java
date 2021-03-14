@@ -19,6 +19,11 @@ public class DeclarationIrService {
 	@Autowired
 	private DeclarationIrDao declarationIrDao;
 
+
+	public List<DeclarationIr> findByIceSociete(String ice) {
+		return declarationIrDao.findByIceSociete(ice);
+	}
+
 	public DeclarationIr findByRefEmployee(String ref) {
 		return declarationIrDao.findByRefEmployee(ref);
 	}
@@ -49,24 +54,6 @@ public class DeclarationIrService {
 		}
 	}
 
-	public int payer(String ref, double montant) {
-		DeclarationIr declaration = findByRefEmployee(ref);
-		if (declaration == null) {
-			// reference n'existe pas deja
-			return -1;
-		} else if (declaration.getMontantIr() > declaration.getSalaireNet()
-				|| declaration.getMontantIr() > declaration.getSalaireNet()) {
-			return -2;
-		} else if (declaration.getSalaireBrute() - montant > declaration.getSalaireNet()) {
-			return -3;
-		} else {
-			double newsalnet = declaration.getSalaireBrute() - montant;
-			declaration.setSalaireNet(newsalnet);
-			declarationIrDao.save(declaration);
-			return 1;
-		}
-
-	}
 
 	public List<DeclarationIr> findAll() {
 		return declarationIrDao.findAll();

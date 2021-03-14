@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +27,11 @@ public class DeclarationIrWs {
 
 	@Autowired
 	private DeclarationIrService declarationIrService;
+	
+	@GetMapping("/ice/{ice}")
+	public List<DeclarationIr> findByIceSociete(@PathVariable String ice) {
+		return declarationIrService.findByIceSociete(ice);
+	}
 
 	@DeleteMapping("/ref/{ref}")
 	public int deleteByRefEmployee(@PathVariable String ref) {
@@ -44,12 +48,12 @@ public class DeclarationIrWs {
 	}
 
 	@GetMapping("/reference/{ref}/montant/{montant}")
-	public List<DeclarationIr> findByRefEmployeeLikeAndSalaireNetGreaterThan(String ref, double montant) {
+	public List<DeclarationIr> findByRefEmployeeLikeAndSalaireNetGreaterThan(@PathVariable String ref,@PathVariable double montant) {
 		return declarationIrService.findByRefEmployeeLikeAndSalaireNetGreaterThan(ref, montant);
 	}
 
 	@GetMapping("/ref/{ref}/montant/{montant}")
-	public List<DeclarationIr> findByRefEmployeeLikeAndSalaireBruteGreaterThan(String ref, double montant) {
+	public List<DeclarationIr> findByRefEmployeeLikeAndSalaireBruteGreaterThan(@PathVariable String ref,@PathVariable double montant) {
 		return declarationIrService.findByRefEmployeeLikeAndSalaireBruteGreaterThan(ref, montant);
 	}
 
@@ -58,11 +62,6 @@ public class DeclarationIrWs {
 	@PostMapping("/")
 	public int save(@RequestBody DeclarationIr declaration) {
 		return declarationIrService.save(declaration);
-	}
-
-	 @PutMapping("/payer/ref/{ref}/montant/{montant}")
-	public int payer(@PathVariable String ref,@PathVariable double montant) {
-		return declarationIrService.payer(ref, montant);
 	}
 
 	@GetMapping("/")

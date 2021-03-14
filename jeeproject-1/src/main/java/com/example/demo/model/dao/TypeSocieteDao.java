@@ -1,11 +1,11 @@
-package com.impot.revenuir.dao;
+package com.example.demo.model.dao;
 
 
-import com.impot.revenuir.bean.TypeSociete;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.example.demo.bean.TypeSociete;
+
 
 @Repository
 public interface TypeSocieteDao extends JpaRepository<TypeSociete,Long> {

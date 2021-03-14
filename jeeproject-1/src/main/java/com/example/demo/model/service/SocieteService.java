@@ -1,11 +1,11 @@
-package com.impot.revenuir.service;
+package com.example.demo.model.service;
 
-
-import com.impot.revenuir.bean.Societe;
-import com.impot.revenuir.bean.TypeSociete;
-import com.impot.revenuir.dao.SocieteDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.bean.Societe;
+import com.example.demo.bean.TypeSociete;
+import com.example.demo.model.dao.SocieteDao;
 
 import javax.transaction.Transactional;
 import java.util.List;

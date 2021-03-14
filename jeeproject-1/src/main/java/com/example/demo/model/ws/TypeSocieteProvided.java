@@ -1,9 +1,10 @@
-package com.impot.revenuir.ws;
+package com.example.demo.model.ws;
 
-import com.impot.revenuir.bean.TypeSociete;
-import com.impot.revenuir.service.TypeSocieteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.demo.bean.TypeSociete;
+import com.example.demo.model.service.TypeSocieteService;
 
 import java.util.List;
 

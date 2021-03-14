@@ -16,7 +16,6 @@ public class DeclarationIr {
 	private double montantIr;
 	private int mois;
 	private int annee;
-
 	public long getId() {
 		return id;
 	}

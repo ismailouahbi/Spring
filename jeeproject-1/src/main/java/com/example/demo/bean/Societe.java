@@ -1,5 +1,4 @@
-package com.impot.revenuir.bean;
-
+package com.example.demo.bean;
 import javax.persistence.*;
 
 @Entity

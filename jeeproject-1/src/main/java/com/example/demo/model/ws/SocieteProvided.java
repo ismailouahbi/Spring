@@ -1,12 +1,14 @@
-package com.impot.revenuir.ws;
+package com.example.demo.model.ws;
 
 
-import com.impot.revenuir.bean.Societe;
-import com.impot.revenuir.service.SocieteService;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
+import com.example.demo.bean.Societe;
+import com.example.demo.model.service.SocieteService;
+
 import java.util.List;
 
 @RestController
