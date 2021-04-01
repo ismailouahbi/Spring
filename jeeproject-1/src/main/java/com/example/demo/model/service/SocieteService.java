@@ -13,23 +13,19 @@ import java.util.List;
 @Service
 public class SocieteService {
 
-    @Autowired
-    private SocieteDao societeDao ;
-    @Autowired
-    private TypeSocieteService typeSocieteService ;
-
-    public int save(String ice){
-        Societe societe = findByIce(ice);
-        if(societe!=null)
+    public int save(Societe societe){
+    	
+        if(findByIce(societe.getIce())!=null)
             return -1 ;
         else if (societe.getCapital()<10000)
             return -1 ;
         TypeSociete typeSociete = typeSocieteService.findByCode(societe.getTypeSociete().getCode());
+      
         if (typeSociete == null)
             return -3;
         else {
-
-            societeDao.save(societe) ;
+        	societe.setTypeSociete(typeSociete);
+            societeDao.save(societe);
             return 1;
         }
 
@@ -41,8 +37,9 @@ public class SocieteService {
     }
     @Transactional
     public int deleteByIce(String ice) {
-
-        return societeDao.deleteByIce(ice);
+       int deletec = contratService.deleteBySocieteIce(ice);
+       int deletes = societeDao.deleteByIce(ice);
+       return deletec + deletes;
     }
 
     public List<Societe> findByCapitalGreaterThan(double capital) {
@@ -58,5 +55,12 @@ public class SocieteService {
 
         return societeDao.getOne(id);
     }
+    
+    @Autowired
+    private SocieteDao societeDao ;
+    @Autowired
+    private TypeSocieteService typeSocieteService ;
+    @Autowired
+	private ContratService contratService;
 }
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.bean.DeclarationIr;
 import com.example.demo.bean.TauxDeclarationIr;
 import com.example.demo.model.service.TauxDeclarationIrService;
 
@@ -25,11 +26,22 @@ public class TauxDeclarationIrProvided {
 		return tauxdeclarationirService.findAll();
 	}
 
-	@GetMapping("/salaire/{salaire}")
-	public List<TauxDeclarationIr> findBySalaireGreaterThan(@PathVariable double salaire) {
-		return tauxdeclarationirService.findBySalaireGreaterThan(salaire);
-	}
 	
+	@GetMapping("/salaire/{salaire}")
+	public List<TauxDeclarationIr> findByDeclarationIrSalaireBruteGreaterThan(@PathVariable double salaire) {
+		return tauxdeclarationirService.findByDeclarationIrSalaireBruteGreaterThan(salaire);
+	}
+
+
+
+	@PostMapping("/getSalaireNet")
+	public TauxDeclarationIr getSalaireNet(@RequestBody DeclarationIr declarationIr) {
+		return tauxdeclarationirService.getSalaireNet(declarationIr);
+	}
+
+
+
+
 	@PostMapping("/")
 	public double save(@RequestBody TauxDeclarationIr tauxdeclarationir) {
 		return tauxdeclarationirService.save(tauxdeclarationir);

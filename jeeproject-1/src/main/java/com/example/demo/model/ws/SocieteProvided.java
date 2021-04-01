@@ -18,11 +18,13 @@ public class SocieteProvided {
     @Autowired
     private SocieteService societeService ;
 
-    @PostMapping("/myice/{ice}")
-    public int save(@PathVariable String ice) {
-        return societeService.save(ice);
-    }
-    @GetMapping("/myice/{ice}")
+    
+    @PostMapping("/")
+    public int save(@RequestBody Societe societe) {
+		return societeService.save(societe);
+	}
+
+	@GetMapping("/myice/{ice}")
     public Societe findByIce(@PathVariable String ice) {
         return societeService.findByIce(ice);
     }

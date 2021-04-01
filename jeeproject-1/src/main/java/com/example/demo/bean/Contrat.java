@@ -17,8 +17,8 @@ public class Contrat {
     private long id;
     @ManyToOne
     private Employee employee;
-    //@ToOne
-    //private Socite societe;
+    @ManyToOne
+    private Societe societe;
     @OneToOne
     private TypeContrat typeContrat;
     private Date dateDemarage;
@@ -35,6 +35,13 @@ public class Contrat {
 	}
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+	
+	public Societe getSociete() {
+		return societe;
+	}
+	public void setSociete(Societe societe) {
+		this.societe = societe;
 	}
 	public TypeContrat getTypeContrat() {
 		return typeContrat;

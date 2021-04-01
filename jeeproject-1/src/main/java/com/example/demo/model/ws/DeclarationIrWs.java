@@ -28,13 +28,28 @@ public class DeclarationIrWs {
 	@Autowired
 	private DeclarationIrService declarationIrService;
 	
+	@GetMapping("montant-greather-than/{montant}")
+	public List<DeclarationIr> findByMontantIrSuperieur(double montant) {
+		return declarationIrService.findByMontantIrSuperieur(montant);
+	}
+
+	@GetMapping("/mois/{mois}")
+	public List<DeclarationIr> findByMoisLike(@PathVariable int mois) {
+		return declarationIrService.findByMoisLike(mois);
+	}
+
+	@GetMapping("/annee/{annee}")
+	public List<DeclarationIr> findByAnneeLike(@PathVariable int annee) {
+		return declarationIrService.findByAnneeLike(annee);
+	}
+
 	@GetMapping("/ice/{ice}")
 	public List<DeclarationIr> findByIceSociete(@PathVariable String ice) {
-		return declarationIrService.findByIceSociete(ice);
+		return declarationIrService.findBySocieteIce(ice);
 	}
 
 	@DeleteMapping("/ref/{ref}")
-	public int deleteByRefEmployee(@PathVariable String ref) {
+	public int deleteByEmployeeRef(@PathVariable String ref) {
 		return declarationIrService.deleteByRefEmployee(ref);
 	}
 
@@ -43,18 +58,18 @@ public class DeclarationIrWs {
 	}
 
 	@GetMapping("/ref/{ref}")
-	public DeclarationIr findByRefEmployee(@PathVariable String ref) {
+	public DeclarationIr findByEmployeeRef(@PathVariable String ref) {
 		return declarationIrService.findByRefEmployee(ref);
 	}
 
 	@GetMapping("/reference/{ref}/montant/{montant}")
-	public List<DeclarationIr> findByRefEmployeeLikeAndSalaireNetGreaterThan(@PathVariable String ref,@PathVariable double montant) {
-		return declarationIrService.findByRefEmployeeLikeAndSalaireNetGreaterThan(ref, montant);
+	public List<DeclarationIr> findByEmployeeRefLikeAndSalaireNetGreaterThan(@PathVariable String ref,@PathVariable double montant) {
+		return declarationIrService.findByEmployeeRefLikeAndSalaireNetGreaterThan(ref, montant);
 	}
 
 	@GetMapping("/ref/{ref}/montant/{montant}")
-	public List<DeclarationIr> findByRefEmployeeLikeAndSalaireBruteGreaterThan(@PathVariable String ref,@PathVariable double montant) {
-		return declarationIrService.findByRefEmployeeLikeAndSalaireBruteGreaterThan(ref, montant);
+	public List<DeclarationIr> findByEmployeeRefLikeAndSalaireBruteGreaterThan(@PathVariable String ref,@PathVariable double montant) {
+		return declarationIrService.findByEmployeeRefLikeAndSalaireBruteGreaterThan(ref, montant);
 	}
 
 	

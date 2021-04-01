@@ -1,5 +1,4 @@
 package com.example.demo.model.dao;
-
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -18,4 +17,7 @@ public interface ContratDao extends JpaRepository<Contrat, Long>{
 	
 	int deleteByTypeContratCode(String code);
 	
+	Contrat findBySocieteIce(String ice);
+	
+	int deleteBySocieteIce(String ice);
 }

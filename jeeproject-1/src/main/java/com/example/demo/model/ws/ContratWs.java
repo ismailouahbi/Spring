@@ -44,6 +44,14 @@ public class ContratWs {
 	public List<Contrat> findAll() {
 		return contratService.findAll();
 	}
+	@GetMapping("/Societe/ice/{ice}")
+	public Contrat findBySocieteIce(String ice) {
+		return contratService.findBySocieteIce(ice);
+	}
+	@DeleteMapping("/societe/ice/{ice}")
+	public int deleteBySocieteIce(String ice) {
+		return contratService.deleteBySocieteIce(ice);
+	}
 
 	@Autowired
 	private ContratService contratService;
