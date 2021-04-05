@@ -12,7 +12,7 @@ import com.example.demo.bean.TauxDeclarationIr;
 public interface TauxDeclarationIrDao extends JpaRepository<TauxDeclarationIr, Long> {
 	
 	
-	public List<TauxDeclarationIr>  findByDeclarationIrSalaireBrute(double salaire);
+//	public List<TauxDeclarationIr>  findBySalaireBruteGreaterThan(double salaire);
 	
 
 }

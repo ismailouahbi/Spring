@@ -19,7 +19,7 @@ public class DeclarationIr {
 	private Employee employee;
 	private double salaireBrute;
 	private double salaireNet;
-	private double montantIr;
+	private double montantIr; 
 	private int mois;
 	private int annee;
 	public long getId() {

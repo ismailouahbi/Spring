@@ -50,7 +50,7 @@ public class DeclarationIrWs {
 
 	@DeleteMapping("/ref/{ref}")
 	public int deleteByEmployeeRef(@PathVariable String ref) {
-		return declarationIrService.deleteByRefEmployee(ref);
+		return declarationIrService.deleteByEmployeeRef(ref);
 	}
 
 	public boolean equals(Object obj) {
@@ -59,7 +59,7 @@ public class DeclarationIrWs {
 
 	@GetMapping("/ref/{ref}")
 	public DeclarationIr findByEmployeeRef(@PathVariable String ref) {
-		return declarationIrService.findByRefEmployee(ref);
+		return declarationIrService.findByEmployeeRef(ref);
 	}
 
 	@GetMapping("/reference/{ref}/montant/{montant}")

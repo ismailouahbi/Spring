@@ -14,16 +14,17 @@ public class TauxDeclarationIr {
 	private long id ;
 	private  double salaireMin;
 	private   double salaireMax;
-	@OneToOne
-	private DeclarationIr declarationIr;
 	private  double pourcentage;
+//	@OneToOne
+//	private DeclarationIr declarationIr;
 	
 	
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((declarationIr == null) ? 0 : declarationIr.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		long temp;
 		temp = Double.doubleToLongBits(pourcentage);
@@ -34,6 +35,25 @@ public class TauxDeclarationIr {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
+	
+	public TauxDeclarationIr() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "TauxDeclarationIr [id=" + id + ", salaireMin=" + salaireMin + ", salaireMax=" + salaireMax
+				+ ", pourcentage=" + pourcentage + "]";
+	}
+	public TauxDeclarationIr(long id, double salaireMin, double salaireMax,
+			double pourcentage) {
+		super();
+		this.id = id;
+		this.salaireMin = salaireMin;
+		this.salaireMax = salaireMax;
+		this.pourcentage = pourcentage;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -43,11 +63,6 @@ public class TauxDeclarationIr {
 		if (getClass() != obj.getClass())
 			return false;
 		TauxDeclarationIr other = (TauxDeclarationIr) obj;
-		if (declarationIr == null) {
-			if (other.declarationIr != null)
-				return false;
-		} else if (!declarationIr.equals(other.declarationIr))
-			return false;
 		if (id != other.id)
 			return false;
 		if (Double.doubleToLongBits(pourcentage) != Double.doubleToLongBits(other.pourcentage))
@@ -58,20 +73,7 @@ public class TauxDeclarationIr {
 			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "TauxDeclarationIr [id=" + id + ", salaireMin=" + salaireMin + ", salaireMax=" + salaireMax
-				+ ", declarationIr=" + declarationIr + ", pourcentage=" + pourcentage + "]";
-	}
-	public TauxDeclarationIr(long id, double salaireMin, double salaireMax, DeclarationIr declarationIr,
-			double pourcentage) {
-		super();
-		this.id = id;
-		this.salaireMin = salaireMin;
-		this.salaireMax = salaireMax;
-		this.declarationIr = declarationIr;
-		this.pourcentage = pourcentage;
-	}
+
 	public long getId() {
 		return id;
 	}

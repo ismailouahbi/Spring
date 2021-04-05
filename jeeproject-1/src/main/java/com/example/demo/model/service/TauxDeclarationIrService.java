@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.bean.DeclarationIr;
+
 import com.example.demo.bean.TauxDeclarationIr;
 import com.example.demo.model.dao.TauxDeclarationIrDao;
 
@@ -20,9 +20,9 @@ public class TauxDeclarationIrService {
 		return tauxdeclarationirDao.findAll();
 	}
 
-	public List<TauxDeclarationIr> findByDeclarationIrSalaireBruteGreaterThan(double salaire) {
-		return tauxdeclarationirDao.findByDeclarationIrSalaireBrute(salaire);
-	}
+//	public List<TauxDeclarationIr> findBySalaireBruteGreaterThan(double salaire) {
+//		return tauxdeclarationirDao.findBySalaireBruteGreaterThan(salaire);
+//	}
 
 	public int save(TauxDeclarationIr tauxdeclarationir) {
 		if(tauxdeclarationir.getSalaireMin()<0) {
@@ -43,11 +43,11 @@ public class TauxDeclarationIrService {
 	
 
 
-public TauxDeclarationIr getSalaireNet(DeclarationIr declarationIr) {
+public TauxDeclarationIr getSalaireNet(Double salaireBrut) {
 	 List<TauxDeclarationIr>  tauxDeclarationIrs= findAll();
 	 
 	 for (TauxDeclarationIr tauxDeclarationIr : tauxDeclarationIrs) {
-		if(declarationIr.getSalaireBrute() >= tauxDeclarationIr.getSalaireMin() && declarationIr.getSalaireBrute()< tauxDeclarationIr.getSalaireMax() ) {
+		if(salaireBrut >= tauxDeclarationIr.getSalaireMin() && salaireBrut< tauxDeclarationIr.getSalaireMax() ) {
 			
 			return tauxDeclarationIr;
 			}
